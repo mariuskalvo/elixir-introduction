@@ -1,3 +1,5 @@
+# Introduction to Elixir
+
 Elixir is a functional, dynamically typed language that runs on the Erlang VM (BEAM). It is a language that uses the battle tested features of Erlang, while providing the comfort of a modern programming language. Elixir’s language design is similar to that of Ruby, but it is also inspired by e.g. Clojure and Erlang. 
 
 The Erlang VM is known for its capabilities of running fault-tolerant, distributed and low-latency applications. By running on the Erlang VM, these capabilities are available when writing Elixir applications. 
@@ -15,13 +17,15 @@ Elixir was developed by Josè Valim, and first appeared in 2012. Inspired by lan
 
 Functions in Elixir can be either named or anonymous. Anonymous functions can be assigned to variables, in a similar fashion as Javascript. 
 
-`product = fn (a, b) -> a * b end`
+```
+product = fn (a, b) -> a * b end
+```
 
 Named functions are defined using the `def` keyword, followed by the function name and the function parameters. The function scope is surrounded by a `do` and `end` block.
 
 ```
 def greet(name) do
-    "Hello #{name}"
+  "Hello #{name}"
 end
 ```
 
@@ -114,6 +118,28 @@ end
 
 The content of odd_even_message will be assigned either `"This is even"` or `"This is odd"` based on the value of x. The same pattern can be used for `case` and `cond`, assigning a value based on the evaluation of the control flow operator.
 
+
+## Pipe operator
+
+The pipe operator is used to chain output from one expression as the input to another function, as the first argument.
+
+If we wanted to nest functions and use the output from one function as the input of another, we would have to write something like this in many other languages. 
+
+``` 
+third_function(second_function(first_function("input")))
+```
+
+The equivalent using the pipe operator could be something like this: 
+
+```
+"input"
+|> first_function()
+|> second_function()
+|> third_function()
+```
+
+The pipe operator allows us to easily compose simple expressions into complex ones, while maintaining a readable code structure.  
+
 ## Concurrency
 
 To solve the challenges of concurrency, Erlang adopted an actor model pattern. The actor model is a conceptual model of computation design to help solve the challenges of computational concurrency. In the actor model, the actor is the computational entity in our software. A single actor can send messages, receive messages, create new child actors or terminate any existing child actors. At the root of our application, we have our root actor, which is responsible for creating more actors which eventually creates a process tree which represents the desired state of our application. 
@@ -121,7 +147,40 @@ To solve the challenges of concurrency, Erlang adopted an actor model pattern. T
 The actor model is implemented in Elixir and Erlang through BEAM processes. Processes in the Erlang VM are lightweight, and must not be confused with operating system processes. They are low-cost processes managed by the virtual machine, which are fast to create, terminate and have little memory overhead. This model of computation allows applications running on the Erlang VM to scale very well. 
 
 ## Tooling
+Many of the tools available for Elixir development have been developed over decades with the Erlang ecosystem in mind. Since Elixir compiles to Erlang bytecode, the tooling available for Erlang is largely also available for Elixir. 
+
+### Mix 
+Mix is a build tool that is used to create your Elixir application, testing, compliation, dependency management and creating tasks. A close comparison to the Javascript world would be the node package manager, NPM. 
+
+### IEx
+IEx, or Interactive Elixir, is Elixirs interactive shell. This is a REPL tool which allows us to interactively evaluate Elixir code. We are also able to load our Mix project into the IEx scope which allows us to call any of the functions in our code for a quick feedback loop. Running an application in the context of IEx also allows us to inspect the state of the processes in our supervision tree.
+
+### Editor plugins
+
+### Other
+- Debugger
+- Observer
+- Prying
+- Dialyzer
 
 ## Frameworks
+
+## Phoenix
+
+Phoenix is a web framework written in Elixir, which offers high developer productivity, performance and concurrency. Similar to what Rails is to Ruby, Phoenix has become the de facto web framework for Elixir. 
+
+- Rapid prototyping
+- Opinionated with clear conventions
+- LiveView
+- Batteries included
+
+# Why Elixir?
+
+- All the battle tested features of Erlang available in a new package
+- Entry to functional programming
+- Concurrency out of the box. Actor model in the runtime
+- Rapid web development using Phoenix
+
+# Other resources
 
 # Summary
