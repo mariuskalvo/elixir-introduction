@@ -151,6 +151,7 @@ The actor model is implemented in Elixir and Erlang through BEAM processes. Proc
 It would be challenging to write about all the features of a programming language in a single blog post. If you are courious about more of Elixirs language features, [elixirschool.com](https://elixirschool.com/en/) is a great resource for learning, along with the official documentation at [elixir-lang.org](https://elixir-lang.org/docs.html).
 
 # Tooling
+
 Many of the tools available for Elixir development have been developed over decades with the Erlang ecosystem in mind. Since Elixir compiles to Erlang bytecode, the tooling available for Erlang is largely also available for Elixir. 
 
 ## Mix 
@@ -170,6 +171,7 @@ IEx, or Interactive Elixir, is Elixirs interactive shell. This is a REPL tool wh
 # Frameworks
 
 ## Phoenix
+![Phoenix framework](images/phoenix.png "Phoenix Framework")
 
 Phoenix is a web framework written in Elixir, which offers high developer productivity, performance and concurrency. Similar to what Rails is to Ruby, Phoenix has become the de facto web framework for Elixir. 
 
