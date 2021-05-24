@@ -10,9 +10,7 @@ We cannot look into the history of Elixir without taking a look at Erlang, the g
 
 Elixir was developed by Josè Valim, and first appeared in 2012. Inspired by languages such as Ruby, Clojure and Erlang, Jose created a new language that had the capabilities of Erlang and its ecosystem, with a developer friendly syntax, lowering the threshold for developers to take advantage of the Open Telecom Platform. 
 
-
 # Language features
-
 ## Structuring code using functions and modules
 
 Functions in Elixir can be either named or anonymous. Anonymous functions can be assigned to variables, in a similar fashion as Javascript. 
@@ -146,41 +144,51 @@ To solve the challenges of concurrency, Erlang adopted an actor model pattern. T
 
 The actor model is implemented in Elixir and Erlang through BEAM processes. Processes in the Erlang VM are lightweight, and must not be confused with operating system processes. They are low-cost processes managed by the virtual machine, which are fast to create, terminate and have little memory overhead. This model of computation allows applications running on the Erlang VM to scale very well. 
 
-## Tooling
+## Error handling
+![Have you tried turning it off and on again?](images/off_on_again.jpg "Have you tried turning it off and on again?")
+
+## Language feature resources
+It would be challenging to write about all the features of a programming language in a single blog post. If you are courious about more of Elixirs language features, [elixirschool.com](https://elixirschool.com/en/) is a great resource for learning, along with the official documentation at [elixir-lang.org](https://elixir-lang.org/docs.html).
+
+# Tooling
 Many of the tools available for Elixir development have been developed over decades with the Erlang ecosystem in mind. Since Elixir compiles to Erlang bytecode, the tooling available for Erlang is largely also available for Elixir. 
 
-### Mix 
+## Mix 
 Mix is a build tool that is used to create your Elixir application, testing, compliation, dependency management and creating tasks. A close comparison to the Javascript world would be the node package manager, NPM. 
 
-### IEx
+## IEx
 IEx, or Interactive Elixir, is Elixirs interactive shell. This is a REPL tool which allows us to interactively evaluate Elixir code. We are also able to load our Mix project into the IEx scope which allows us to call any of the functions in our code for a quick feedback loop. Running an application in the context of IEx also allows us to inspect the state of the processes in our supervision tree.
 
-### Editor plugins
+## Editor plugins
 
-### Other
+## Other
 - Debugger
 - Observer
 - Prying
 - Dialyzer
 
-## Frameworks
+# Frameworks
 
 ## Phoenix
 
 Phoenix is a web framework written in Elixir, which offers high developer productivity, performance and concurrency. Similar to what Rails is to Ruby, Phoenix has become the de facto web framework for Elixir. 
 
-- Rapid prototyping
-- Opinionated with clear conventions
-- LiveView
-- Batteries included
+Similarly to Ruby on Rails, Phoenix allows rapid development with a clear convention on how to architecture our applications. It ships with scaffolding tools, which allows us to quickly create the our application resources.
+
+Phoenix ships with a web technology called LiveView. Using LiveView, we are able to create rich, real-time web applications without writing Javascript. LiveView uses a message architecture, where messages can change the state of the users application. UI changes are reflected in the UI using pieces of static HTML which is sent over websockets and pieces into the DOM in real time. 
+
+Phoenix is a battery included web framework, which allows developers to work very quickly in creating applications while maintaining clean code due to its clear convention and great documentation. 
 
 # Why Elixir?
 
-- All the battle tested features of Erlang available in a new package
-- Entry to functional programming
-- Concurrency out of the box. Actor model in the runtime
-- Rapid web development using Phoenix
+Elixir with its ecosystem provides a way to create reliable, fault-tolerant and distributed applications, with a low entry barrier for developers. It gives us a programming model with great solutions to concurrency challenges out of the box, with little overhead. 
 
-# Other resources
+The documentation of Elixir and many of its most popular frameworks is great. Using docstrings and doctests, it encourages developers to write documentation and to keep its documentation up to date by incorporating it into your test suites. 
 
-# Summary
+Elixir is a great entry to functional programming. Learning functional programming and the coding style it encourages, may help developers increase their skills in other imperative and object oriented programming languages, e.g. by writing small, pure and testable functions and keeping a clear division between your business logic and side effects. 
+
+One of the cons of using Elixir is adoption and finding developers. While the technology may be battle tested used for decades, without existing adoption, using new technology not backed by large corporations such as Facebook or Google may be regarded as too much of a risk. However, regarding adoption, developers and stakeholders have the ability and privilege of defining tomorrow's mainstream technologies by not only exploring established options.
+
+I highly recommend to take a look at Erlang the movie, a relic from the 90s to advertise the capabilities of Erlang and OTP.
+
+https://www.youtube.com/watch?v=BXmOlCy0oBM
