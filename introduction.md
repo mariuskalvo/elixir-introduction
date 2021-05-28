@@ -41,6 +41,48 @@ To call a function from outside our defined module, we simply have to specify th
 
 ## Pattern matching
 
+What is usually the assignment operator, `=` in most languages, is
+called the match operator in Elixir. 
+The match operator will attempt to match the right and left and side of the `=` sign, and throw and error if no match can me made. This is useful for assigning multiple values or destructuring a complex object, similar to Javascript destructuring. 
+
+E.q., matching a list of unbound values in a list with a list of values on the right hand side, will assign the unbound values. 
+```
+[a, b, c] = [1, 2, 3]
+```
+In the example about, `a` will be assigned `1`, `b` assigned `2` and `c` assigned `3`. 
+
+If we wanted to use the match operator for destructuring, we would use the following syntax. 
+```
+person = %{
+  name: "Dave",
+  age: 39
+}
+
+%{age: daves_age} = person 
+```
+We initially set the fields `name` and `age` in the `person` map. Afterwards, we match the left and right hand side by saying some field age should be matched to `daves_age`.
+
+While we are not able to mutate existing data, we can rebind variables with new completely new values.
+
+```
+
+# This will throw and error
+person.name = "John"
+
+# This is allowed
+person = %{
+  name: "John",
+  age: 42
+}
+```
+If we want to disallow variables being assigned when pattern matching, we can use the pin operator. Using the pin operator, the patterns on the left and right hand side will use the variables value to pattern match instead of trying to bind a new value to the variable. 
+
+```
+a = 1
+[^a, b, c] = [1, 2, 3] # This is OK
+[^a, b, c] = [3, 2, 1] # This will throw and error
+```
+
 ## Control flow
 
 ### if-else
