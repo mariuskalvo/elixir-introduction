@@ -8,7 +8,9 @@ The Erlang VM is known for its capabilities of running fault-tolerant, distribut
 
 We cannot look into the history of Elixir without taking a look at Erlang, the giant whose shoulders Elixir stands on. Erlang is a functional programming language created for developing fault-tolerant, distributed and low-latency applications, specifically for the telecom industry. It was developed at Ericsson in the late 1980s and was used for their telephone switching systems. Erlang is often used as a general term of the language Erlang and Erlang/OTP. OTP, or the Open Telecom Platform consists of the Erland runtime, including the Erlang VM, libraries and middleware you can use in your applications, and a set of design principles on how to develop Erlang applications. 
 
-Elixir was developed by Josè Valim, and first appeared in 2012. Inspired by languages such as Ruby, Clojure and Erlang, Jose created a new language that had the capabilities of Erlang and its ecosystem, with a developer friendly syntax, lowering the threshold for developers to take advantage of the Open Telecom Platform. 
+Elixir was developed by Josè Valim, and first appeared in 2012. Inspired by languages such as Ruby, Clojure and Erlang, Jose created a new language that had the capabilities of Erlang and its ecosystem, with a developer friendly syntax, lowering the threshold for developers to take advantage of the Open Telecom Platform. Since the apperance of Elixir, many companies has taken use of the language and its underlying platform. For instance, Discord uses Elixir and OTP in its chat infrastructure, where they have used Elixir serivces to serve more than 12 million concurrent users, sending more that 26 million WebSocket events to clients every second. https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/
+
+
 
 # Language features
 ## Structuring code using functions and modules
@@ -32,7 +34,7 @@ Named functions must live inside a module. We use modules to group functions tog
 ```
 defmodule Greeter do
   def greet(name) do
-      "Hello #{name}"
+    "Hello #{name}"
   end
 end
 ```
@@ -202,22 +204,10 @@ Mix is a build tool that is used to create your Elixir application, testing, com
 ## IEx
 IEx, or Interactive Elixir, is Elixirs interactive shell. This is a REPL tool which allows us to interactively evaluate Elixir code. We are also able to load our Mix project into the IEx scope which allows us to call any of the functions in our code for a quick feedback loop. Running an application in the context of IEx also allows us to inspect the state of the processes in our supervision tree.
 
-## Editor plugins
+# Phoenix
+There are many frameworks available for different problem domains, ranging from web development and numerical computing to IoT programming. Phoenix is probably one of the more known frameworks available in the Elixir ecosystem. Phoenix is a web framework written in Elixir, which offers high developer productivity, performance and concurrency. Similar to what Rails is to Ruby, Phoenix has become the de facto web framework for Elixir. 
 
-## Other
-- Debugger
-- Observer
-- Prying
-- Dialyzer
-
-# Frameworks
-
-## Phoenix
-![Phoenix framework](images/phoenix.png "Phoenix Framework")
-
-Phoenix is a web framework written in Elixir, which offers high developer productivity, performance and concurrency. Similar to what Rails is to Ruby, Phoenix has become the de facto web framework for Elixir. 
-
-Similarly to Ruby on Rails, Phoenix allows rapid development with a clear convention on how to architecture our applications. It ships with scaffolding tools, which allows us to quickly create the our application resources.
+Just like Ruby on Rails, Phoenix allows rapid development with a clear convention on how to architecture our applications. It ships with scaffolding tools, which allows us to quickly create the our application resources. 
 
 Phoenix ships with a web technology called LiveView. Using LiveView, we are able to create rich, real-time web applications without writing Javascript. LiveView uses a message architecture, where messages can change the state of the users application. UI changes are reflected in the UI using pieces of static HTML which is sent over websockets and pieces into the DOM in real time. 
 
@@ -227,12 +217,9 @@ Phoenix is a battery included web framework, which allows developers to work ver
 
 Elixir with its ecosystem provides a way to create reliable, fault-tolerant and distributed applications, with a low entry barrier for developers. It gives us a programming model with great solutions to concurrency challenges out of the box, with little overhead. 
 
-The documentation of Elixir and many of its most popular frameworks is great. Using docstrings and doctests, it encourages developers to write documentation and to keep its documentation up to date by incorporating it into your test suites. 
-
 Elixir is a great entry to functional programming. Learning functional programming and the coding style it encourages, may help developers increase their skills in other imperative and object oriented programming languages, e.g. by writing small, pure and testable functions and keeping a clear division between your business logic and side effects. 
 
 One of the cons of using Elixir is adoption and finding developers. While the technology may be battle tested used for decades, without existing adoption, using new technology not backed by large corporations such as Facebook or Google may be regarded as too much of a risk. However, regarding adoption, developers and stakeholders have the ability and privilege of defining tomorrow's mainstream technologies by not only exploring established options.
 
 I highly recommend to take a look at Erlang the movie, a relic from the 90s to advertise the capabilities of Erlang and OTP.
-
 https://www.youtube.com/watch?v=BXmOlCy0oBM
