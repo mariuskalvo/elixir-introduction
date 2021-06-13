@@ -6,7 +6,8 @@ The Erlang VM is known for its capabilities of running fault-tolerant, distribut
 
 # History and background
 
-We cannot look into the history of Elixir without taking a look at Erlang, the giant whose shoulders Elixir stands on. Erlang is a functional programming language created for developing fault-tolerant, distributed and low-latency applications, specifically for the telecom industry. It was developed at Ericsson in the late 1980s and was used for their telephone switching systems. Erlang is often used as a general term of the language Erlang and Erlang/OTP. OTP, or the Open Telecom Platform consists of the Erland runtime, including the Erlang VM, libraries and middleware you can use in your applications, and a set of design principles on how to develop Erlang applications. 
+
+While Elixir is a relatively new language, its foundation was created decades ago, with Erlang/OTP. Erlang is a functional programming language created for developing fault-tolerant, distributed and low-latency applications, specifically for the telecom industry. It was developed at Ericsson in the late 1980s and was used for their telephone switching systems. Erlang is often used as a general term of the language Erlang and Erlang/OTP. OTP, or the Open Telecom Platform consists of the Erland runtime, including the Erlang VM, libraries and middleware you can use in your applications, and a set of design principles on how to develop Erlang applications. 
 
 Elixir was developed by Josè Valim, and first appeared in 2012. Inspired by languages such as Ruby, Clojure and Erlang, Jose created a new language that had the capabilities of Erlang and its ecosystem, with a developer friendly syntax, lowering the threshold for developers to take advantage of the Open Telecom Platform. Since the apperance of Elixir, many companies has taken use of the language and its underlying platform. For instance, Discord uses Elixir and OTP in its chat infrastructure, where they have used Elixir serivces to serve more than 12 million concurrent users, sending more that 26 million WebSocket events to clients every second. https://elixir-lang.org/blog/2020/10/08/real-time-communication-at-scale-with-elixir-at-discord/
 
@@ -45,7 +46,7 @@ To call a function from outside our defined module, we simply have to specify th
 
 What is usually the assignment operator, `=` in most languages, is
 called the match operator in Elixir. 
-The match operator will attempt to match the right and left and side of the `=` sign, and throw and error if no match can me made. This is useful for assigning multiple values or destructuring a complex object, similar to Javascript destructuring. 
+The match operator will attempt to match the right and left and side of the `=` sign, and throw an error if no match can me made. This is useful for assigning multiple values or destructuring a complex object, similar to Javascript destructuring. 
 
 E.q., matching a list of unbound values in a list with a list of values on the right hand side, will assign the unbound values. 
 ```
@@ -68,7 +69,7 @@ While we are not able to mutate existing data, we can rebind variables with new 
 
 ```
 
-# This will throw and error
+# This will throw an error
 person.name = "John"
 
 # This is allowed
@@ -82,7 +83,7 @@ If we want to disallow variables being assigned when pattern matching, we can us
 ```
 a = 1
 [^a, b, c] = [1, 2, 3] # This is OK
-[^a, b, c] = [3, 2, 1] # This will throw and error
+[^a, b, c] = [3, 2, 1] # This will throw an error
 ```
 
 ## Control flow
@@ -184,12 +185,9 @@ The pipe operator allows us to easily compose simple expressions into complex on
 
 ## Concurrency
 
-To solve the challenges of concurrency, Erlang adopted an actor model pattern. The actor model is a conceptual model of computation design to help solve the challenges of computational concurrency. In the actor model, the actor is the computational entity in our software. A single actor can send messages, receive messages, create new child actors or terminate any existing child actors. At the root of our application, we have our root actor, which is responsible for creating more actors which eventually creates a process tree which represents the desired state of our application. 
+To solve the challenges of concurrency, Erlang has adopted the actor model pattern. The actor model is a conceptual model of computation design to help solve the challenges of computational concurrency. The actor is the computational entity in our software. A single actor can send messages, receive messages, create new child actors or terminate any existing child actors. At the root of our application, we have our root actor, which is responsible for creating more actors which eventually creates a process tree which represents the desired state of our application. 
 
-The actor model is implemented in Elixir and Erlang through BEAM processes. Processes in the Erlang VM are lightweight, and must not be confused with operating system processes. They are low-cost processes managed by the virtual machine, which are fast to create, terminate and have little memory overhead. This model of computation allows applications running on the Erlang VM to scale very well. 
-
-## Error handling
-![Have you tried turning it off and on again?](images/off_on_again.jpg "Have you tried turning it off and on again?")
+The actor model is implemented in Elixir and Erlang through BEAM processes. Processes in the Erlang VM are lightweight, and must not be confused with operating system processes. They are low-cost processes managed by the virtual machine, which are fast to create, terminate and have little memory overhead. This model allows for applications running on the Erlang VM to scale very well.
 
 ## Language feature resources
 It would be challenging to write about all the features of a programming language in a single blog post. If you are courious about more of Elixirs language features, [elixirschool.com](https://elixirschool.com/en/) is a great resource for learning, along with the official documentation at [elixir-lang.org](https://elixir-lang.org/docs.html).
@@ -205,7 +203,7 @@ Mix is a build tool that is used to create your Elixir application, testing, com
 IEx, or Interactive Elixir, is Elixirs interactive shell. This is a REPL tool which allows us to interactively evaluate Elixir code. We are also able to load our Mix project into the IEx scope which allows us to call any of the functions in our code for a quick feedback loop. Running an application in the context of IEx also allows us to inspect the state of the processes in our supervision tree.
 
 # Phoenix
-There are many frameworks available for different problem domains, ranging from web development and numerical computing to IoT programming. Phoenix is probably one of the more known frameworks available in the Elixir ecosystem. Phoenix is a web framework written in Elixir, which offers high developer productivity, performance and concurrency. Similar to what Rails is to Ruby, Phoenix has become the de facto web framework for Elixir. 
+There are many frameworks available for different problem domains, ranging from web development and numerical computing to IoT programming. Phoenix is probably one of the more known frameworks available in the Elixir ecosystem. Phoenix is a web framework, which offers high developer productivity, performance and concurrency. It has become a go-to web framework for Elixir, similar to what Ruby on Rails is for Ruby.
 
 Just like Ruby on Rails, Phoenix allows rapid development with a clear convention on how to architecture our applications. It ships with scaffolding tools, which allows us to quickly create the our application resources. 
 
@@ -219,7 +217,8 @@ Elixir with its ecosystem provides a way to create reliable, fault-tolerant and 
 
 Elixir is a great entry to functional programming. Learning functional programming and the coding style it encourages, may help developers increase their skills in other imperative and object oriented programming languages, e.g. by writing small, pure and testable functions and keeping a clear division between your business logic and side effects. 
 
-One of the cons of using Elixir is adoption and finding developers. While the technology may be battle tested used for decades, without existing adoption, using new technology not backed by large corporations such as Facebook or Google may be regarded as too much of a risk. However, regarding adoption, developers and stakeholders have the ability and privilege of defining tomorrow's mainstream technologies by not only exploring established options.
+One of the challenges with using Elixir is adoption and finding developers. While the technology may be battle tested used for decades, without existing adoption, it may often be difficult for stakeholders to take the risk of adopting new technologies. While the risk may be high, developers and stakeholders have a opportunity to define tomorrows mainstream technologies, by not only exploring established options. 
 
-I highly recommend to take a look at Erlang the movie, a relic from the 90s to advertise the capabilities of Erlang and OTP.
+As a final note, I highly recommend to have a look at Erlang the movie, a relic from the 90s to advertise the capabilities of Erlang and OTP.
+
 https://www.youtube.com/watch?v=BXmOlCy0oBM
