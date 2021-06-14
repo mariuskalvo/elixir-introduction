@@ -85,6 +85,77 @@ a = 1
 [^a, b, c] = [1, 2, 3] # This is OK
 [^a, b, c] = [3, 2, 1] # This will throw an error
 ```
+## Pipe operator
+
+The pipe operator is used to chain output from one expression as the input to another function, as the first argument.
+
+If we wanted to nest functions and use the output from one function as the input of another, we would have to write something like this in many other languages. 
+
+``` 
+third_function(second_function(first_function("input")))
+```
+
+The equivalent using the pipe operator could be something like this: 
+
+```
+"input"
+|> first_function()
+|> second_function()
+|> third_function()
+```
+
+The pipe operator allows us to easily compose simple expressions into complex ones, while maintaining a readable code structure.  
+
+
+## Working with enumerables
+
+Enumerables in Elixir are collections that can enumerate over, such as lists, maps and ranges. Elixir has the abilities to work with enumerables that you would expect to exist in a functional programming language. Three commonly used functions are `map`, `filter` and `reduce`, which all can be found in the `Enum` module.
+
+### map
+In order to map over a collection of elements in Elixir, we would use the `map/2` function. It accepts two arguments, a enumerable and a function. The function is applied to each item, producing a new collection based on the functions return value.
+
+If we wanted to double every number in a collection, we could simply map over the collection with a function that doubles each number.
+
+```elixir
+numbers = [1, 2, 3, 4, 5]
+double_numbers = Enum.map(numbers, fn number -> number * 2 end)
+# [2, 4, 6, 8, 10]
+```
+
+### filter
+If we want to filter out some elements from our enumerable, we can use the `filter/2` function. Filter accepts to arguments, an enumerable and a function which is evaluated for every item in the collection. If the function returns `true`, the element is included in a new collection, otherwise it is omitted.
+
+If we wanted to exclude all non even numbers from a list, we could do the following:
+
+```elixir
+numbers = [1, 2, 3, 4, 5]
+even_numbers = Enum.map(numbers, fn number -> rem(number, 2) == 0 end)
+# [2, 4]
+```
+
+### reduce
+If we wanted to transform our enumerable to a single value, we could apply the `reduce/3` function. It accepts 3 arguments; a collection, an initial value for the accumulator and a function, which is called for each element in the collection with the value and the current accumulator for each step of iteration. 
+
+If we wanted to multiply all the values in an enumerable, we could do the following:
+
+```elixir
+numbers = [1, 2, 3, 4, 5]
+product_of_numbers = Enum.reduce(numbers, 1, fn number, acc -> acc * number end)
+# 120
+```
+
+### Chaining transformations using the pipe operator
+Elixir is excellent at transforming data due to its abilities in composability by chaining expressions together. If we had different operations that needs to be applied to a collection in sequence, we could achieve this using the pipe operator.
+
+If we wanted to perform all the operations descibed above using the `map`, `filter` and `reduce` functions, we could compose a larger expression by doing the following:
+
+```elixir
+[1, 2, 3, 4, 5]
+|> Enum.map(fn number -> number * 2 end)
+|> Enum.filter(fn number -> rem(number, 2) == 0 end)
+|> Enum.reduce(1, fn number, acc -> number * acc end)
+# 3840
+```
 
 ## Control flow
 
@@ -162,26 +233,7 @@ end
 The content of odd_even_message will be assigned either `"This is even"` or `"This is odd"` based on the value of x. The same pattern can be used for `case` and `cond`, assigning a value based on the evaluation of the control flow operator.
 
 
-## Pipe operator
 
-The pipe operator is used to chain output from one expression as the input to another function, as the first argument.
-
-If we wanted to nest functions and use the output from one function as the input of another, we would have to write something like this in many other languages. 
-
-``` 
-third_function(second_function(first_function("input")))
-```
-
-The equivalent using the pipe operator could be something like this: 
-
-```
-"input"
-|> first_function()
-|> second_function()
-|> third_function()
-```
-
-The pipe operator allows us to easily compose simple expressions into complex ones, while maintaining a readable code structure.  
 
 ## Concurrency
 
