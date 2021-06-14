@@ -42,6 +42,8 @@ end
 
 To call a function from outside our defined module, we simply have to specify the module and function names. `Greeter.greet(“John Doe”)`. Structuring code in Elixir is very simple. We create contexts and boundaries using modules which contain functions. 
 
+The return value of a function is always the last expression evaluated in the function scope. Given the input `"John Doe"`, the return value of the `Greeter.greet` function is `"Hello John Doe"`, even though we did not explicitly specify that the value would be returned, which is common on other languages.
+
 ## Pattern matching
 
 What is usually the assignment operator, `=` in most languages, is
@@ -156,6 +158,9 @@ If we wanted to perform all the operations descibed above using the `map`, `filt
 |> Enum.reduce(1, fn number, acc -> number * acc end)
 # 3840
 ```
+
+If you would like to have a further look at the available functions in the `Enum` module, have a look at the [official documentation](https://hexdocs.pm/elixir/1.12.1/Enum.html).
+
 
 ## Control flow
 
